@@ -287,17 +287,17 @@
 
                 if (response.ok) {
                     const result = await response.json();
-                    messageArea.textContent = 'Servidor criado com sucesso! IP: ' + result.serverIp;
+                    messageArea.textContent = 'Servidor criado com sucesso! IP: ' + result.server_address;
                     messageArea.classList.remove('text-teal-400');
                     messageArea.classList.add('text-green-500');
                 } else {
                     const error = await response.json();
-                    messageArea.textContent = 'Erro ao criar o servidor: ' + error.message;
+                    messageArea.textContent = `Erro ao criar o servidor: ${error.message}`;
                     messageArea.classList.remove('text-teal-400');
                     messageArea.classList.add('text-red-500');
                 }
             } catch (error) {
-                messageArea.textContent = 'Erro de conexão. Verifique o servidor de backend.';
+                messageArea.textContent = `Erro de conexão. Verifique o servidor de backend. URL utilizada: ${backendApiUrl}`;
                 messageArea.classList.remove('text-teal-400');
                 messageArea.classList.add('text-red-500');
                 console.error('Erro na requisição da API:', error);
